@@ -1329,6 +1329,23 @@ public class CanRefreshLayout extends FrameLayout {
 
         }
 
+    }
+    /**
+     * 自动刷新
+     */
+    public void showRefresh() {
+        if (mHeaderView != null) {
+            postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    setBackgroundResource(mRefreshBackgroundResource);
+                    smoothMove(true, false, -mHeaderHeight, -mHeaderHeight);
+                    getHeaderInterface().onRelease();
+                }
+            }, DEFAULT_AUTO_DURATION);
+
+
+        }
 
     }
 
